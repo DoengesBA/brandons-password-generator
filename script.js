@@ -1,8 +1,20 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+function randomInt(min,max) {
+  if (!max) {
+    max = min
+    min = 0
+  }
+  var rand = Math.random()
+  return Math.floor(min*(1 - rand) + rand*max)
+}
 
-function generatePassword(){
+function getRandomItem(list) {
+  return list[randomInt(list.length)]
+}
+
+function generatePassword() {
   var userInput = window.prompt("How many characters would you like to have?")
   
   var passwordLength = parseInt(userInput)
@@ -40,14 +52,19 @@ function generatePassword(){
   if (userSelectsSymbols === true) {
     selections.push(symbolsList)
   }
+  while (!userSelectsLowercase && !userSelectsUppercase && !userSelectsNumbers && !userSelectsSymbols) {
+    window.alert("You must select at least one character type!");
+    return
+  }
 
   var generatedPassword = ""
 
   for (var i = 0; i < passwordLength; i++) {
-    
+    var randomItem = getRandomItem(selections)
+    var randomChar = getRandomItem(randomItem)
+    generatedPassword += randomChar
   }
 }
-
 
 // Write password to the #password input
 function writePassword() {
