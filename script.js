@@ -1,45 +1,53 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// List of variables to utilize Uppercase, Lowercase, Numbers and Symbols
-var uppercaseCharCodes = arrayFromLowToHigh(65, 90);
-var lowercaseCharCodes = arrayFromLowToHigh(97, 122);
-var numericCharCodes = arrayFromLowToHigh(48, 57);
-var specialCharCodes = arrayFromLowToHigh(33, 47).concat(arrayFromLowToHigh(58, 126));
 
-
-// Prompt for the length of password 
-var charAmountNumber = prompt("How many characters would you like?")
-  if()
-
-
-// Prompt for lowercase
-
-// Prompt for uppercase
-
-
-// Prompt for numeric
-
-
-// Prompt for special characters
-
-function generatePassword() {
+function generatePassword(){
+  var userInput = window.prompt("How many characters would you like to have?")
   
-  
-  
-  function arrayFromLowToHigh(low, high) {
-    const array = []
-    for (var i = low; i <= high; i++) {
-      array.push(i)
-    }
+  var passwordLength = parseInt(userInput)
+
+  if (isNaN(passwordLength)) {
+    window.alert("Invalid characters! Please use numbers only!")
+    return
   }
 
-  
+  if (passwordLength < 8 || passwordLength > 128) {
+    window.alert("Invalid amount of characters! Please try again!")
+    return
+  }
 
+  var userSelectsLowercase = window.confirm("Would you like to include lowercase characters?")
+  var userSelectsUppercase = window.confirm("Would you like to include uppercase characters?")
+  var userSelectsNumbers = window.confirm("Would you like to include numbers?")
+  var userSelectsSymbols = window.confirm("Would you like to include symbols?")
 
+  var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p","q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+  var uppercaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P","Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+  var numbersList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+  var symbolsList = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~" ]
 
-  return array;
+  var selections = []
+  if (userSelectsLowercase === true) {
+    selections.push(lowercaseList)
+  }
+  if (userSelectsUppercase === true) {
+    selections.push(uppercaseList)
+  }
+  if (userSelectsNumbers === true) {
+    selections.push(numbersList)
+  }
+  if (userSelectsSymbols === true) {
+    selections.push(symbolsList)
+  }
+
+  var generatedPassword = ""
+
+  for (var i = 0; i < passwordLength; i++) {
+    
+  }
 }
+
 
 // Write password to the #password input
 function writePassword() {
