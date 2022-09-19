@@ -64,9 +64,9 @@ function generatePassword() {
     var randomChar = getRandomItem(randomItem)
     generatedPassword += randomChar
   }
-}
 
-return generatedPassword
+  return generatedPassword
+}
 
 // Write password to the #password input
 function writePassword() {
